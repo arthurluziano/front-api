@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react/jsx-no-comment-textnodes */
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login/Login";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <BrowserRouter>
+      <Routes>
+        // Redireciona o usuário automaticamente para a url "/login".
+        <Route path="/" element={<Navigate to="/login" />} />
 
-export default App;
+        // Carrega o conteúdo da page Login.
+        <Route path="/login" element={<Login />} />
+
+        // Carrega o conteúdo da page SignUp.
+        <Route path="/signup" />
+
+        // Carrega o conteúdo da page ForgotPassword
+        <Route path="/forgot-password" />
+      </Routes>
+    </BrowserRouter>
+  )
+}
